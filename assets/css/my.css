@@ -1,0 +1,15 @@
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+  width: 50px;
+}
+.logo h1 {
+  margin: 0;
+  margin-left: 10px;
+}
+.sticky-logo .logo {
+  transform: scale(0.6);
+  transform-origin: left;
+}
