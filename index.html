@@ -84,7 +84,17 @@
                                         </ul>
                                     </nav>
                                 </div>
-                            </div>             
+                            </div>    
+                            <div class="col-xl-2 col-lg-2 col-md-4">
+                                <div class="header-right-btn f-right d-none d-lg-block">
+                                    <i class="fas fa-search special-tag"></i>
+                                    <div class="search-box">
+                                        <form action="#">
+                                            <input type="text" placeholder="Поиск" name="search">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>         
                             <!-- Mobile Menu -->
                             <div class="col-12">
                                 <div class="mobile_menu d-block d-md-none"></div>
@@ -189,25 +199,62 @@
         <script src="./assets/js/plugins.js"></script>
         <script src="./assets/js/main.js"></script>
      
-   <script src="assets/data.js"></script>
+    <script src="assets/data.js"></script>
     <script>
-        let html = '';
         data = JSON.parse(data);
-        for (id in data) {
-            html += `
-                <div class="col-lg-6 col-md-6">
-                    <div class="single-what-news mb-100">
-                        <div class="what-img">
-                            <img src="assets/img/peolpes/${id}.png" alt="">
-                        </div>
-                        <div class="what-cap">
-                            <h4><a href="about.html?id=${id}">${data[id]['name']}</a></h4>
+
+        function changeContent(html) {
+            $('.whats-news-caption .row').html('').append(html);
+        }
+
+        function getAll() {
+            let html = '';
+            for (id in data) {
+                html += `
+                    <div class="col-lg-6 col-md-6">
+                        <div class="single-what-news mb-100">
+                            <div class="what-img">
+                                <img src="assets/img/peolpes/${id}.png" alt="">
+                            </div>
+                            <div class="what-cap">
+                                <h4><a href="about.html?id=${id}">${data[id]['name']}</a></h4>
+                            </div>
                         </div>
                     </div>
-                </div>
-            `;
+                `;
+            }
+            changeContent(html);
         }
-        $('.whats-news-caption .row').append(html);
+        getAll();
+    </script>
+    <script>
+        $('[name="search"]').on('input', function() {
+            let search = $(this).val().trim().toLowerCase().replaceAll('ё', 'е');
+            console.log(search);
+            let html = '';
+            for (id in data) {
+                let name = data[id]['name'].toLowerCase().replaceAll('ё', 'е');
+                console.log(name, search);
+                if (name.indexOf(search) === -1) continue;
+
+                html += `
+                    <div class="col-lg-6 col-md-6">
+                        <div class="single-what-news mb-100">
+                            <div class="what-img">
+                                <img src="assets/img/peolpes/${id}.png" alt="">
+                            </div>
+                            <div class="what-cap">
+                                <h4><a href="about.html?id=${id}">${data[id]['name']}</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            if (search)
+                changeContent(html);
+            else 
+                getAll();
+        });
     </script>
 
     </body>
