@@ -60,19 +60,11 @@
                                 <div class="main-menu d-none d-md-block">
                                     <nav>                  
                                         <ul id="navigation">    
-                                            <li><a href="index.html">Интересные люди</a></li>
-                                            <!-- <li><a href="categori.html">Category</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="latest_news.html">Latest News</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="#">Pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="elements.html">Element</a></li>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="single-blog.html">Blog Details</a></li>
-                                                    <li><a href="details.html">Categori Details</a></li>
-                                                </ul>
-                                            </li> -->
+                                            <li><a href="index.html">Все</a></li>
+                                            <li><a href="#">Рубрики</a>
+                                                <ul class="submenu categories-list"></ul>
+                                            </li>
+                                            <li><a href="contact.html">Задать вопрос</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -161,8 +153,14 @@
 
         <script src="assets/data.js"></script>
         <script>
+            let categoriesHtml = '';
+            for (let id in categories) {
+                if (id == 0) continue;
+                categoriesHtml += `<li><a href="index.html?id=${id}">${categories[id]}</a></li>`;
+            }
+            $('.categories-list').append(categoriesHtml);
+
             let html = '';
-            data = JSON.parse(data);
             let href = window.location.href;
             let get = href.split('?')[1];
             let id = parseGet(get)['id'];
