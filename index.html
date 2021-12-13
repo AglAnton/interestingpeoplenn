@@ -215,6 +215,7 @@
         $('.category-title').text(categories[categoryId]);
 
         function changeContent(html) {
+            html = html ? html : 'Здесь пока что пусто';
             $('.whats-news-caption .row').html('').append(html);
         }
 
