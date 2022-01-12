@@ -74,7 +74,7 @@
                                             <li><a href="#">Рубрики</a>
                                                 <ul class="submenu categories-list"></ul>
                                             </li>
-                                            <li><a href="#">Задать вопрос</a></li>
+                                            <li><a href="#">Обратная свзяь</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -100,7 +100,7 @@
                 <div class="row d-flex justify-content-between">
                     <div class="col-lg-5 col-md-5">
                         <div class="section-tittle mb-30">
-                            <h3>Задать вопрос</h3>
+                            <h3>Обратная свзяь</h3>
                         </div>
                     </div>
                 </div>
@@ -231,7 +231,7 @@
           if (isError) return;
           $.ajax({
             type: 'POST',
-            url: 'http://sdaam.ru/works/nn/mail.php',
+            url: '//sdaam.ru/works/nn/mail.php',
             data: data,
             error: xhr => {
               console.log('Error ' + xhr.status);
